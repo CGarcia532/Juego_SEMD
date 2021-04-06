@@ -120,10 +120,10 @@ var Game = function()
 		{
 			var auxX = this.piecesArray[piece_number-1].posX;
 			var auxY = this.piecesArray[piece_number-1].posY;
-			this.piecesArray[piece_number-1].posX = this.piecesArray[15].posX; 
-			this.piecesArray[piece_number-1].posY = this.piecesArray[15].posY;
-			this.piecesArray[15].posX = auxX;
-			this.piecesArray[15].posY = auxY;
+			this.piecesArray[piece_number-1].posX = this.piecesArray[8].posX; 
+			this.piecesArray[piece_number-1].posY = this.piecesArray[8].posY;
+			this.piecesArray[8].posX = auxX;
+			this.piecesArray[8].posY = auxY;
 			this.checkPosition(this.piecesArray[piece_number-1]);
 			wasMoved = true;
 		}
