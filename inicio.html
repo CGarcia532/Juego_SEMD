@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Puzzle</title>
+		<link rel="stylesheet" type="text/css" href="estilos.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+            function guardar(){
+                var nombre = document.getElementById("entrada_texto").value;
+                var tipo = document.getElementById("modo").value;
+                localStorage.setItem("name", nombre);
+                localStorage.setItem("mode", tipo);
+            }
+        </script>
+	</head>
+	<body>
+		<h1 id="talking_box2">¡Bienvenido al Juego de Puzzle!</h1>
+        <h2 id="talking_box3">Por favor, ingresa tu nombre:</h2>
+        <form action="tablero.html" onsubmit="guardar()">
+            <input type="text" id="entrada_texto" maxlength="10" placeholder="Jugador" required />
+            <h2 id="talking_box3">Selecciona el modo de juego:</h2>
+            <select name="modo" id="modo">
+                <option value="ascendente">Ascendente</option>
+                <option value="descendente">Descendente</option>
+            </select>
+            <p><button type="submit" id="jugar" class="jugar">¡Jugar!</button></p>
+        </form>
+	</body>
+</html>
