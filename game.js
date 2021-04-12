@@ -17,7 +17,8 @@ function Random(array)
 
 function drawButtons()
 {
-	$("body").append('<div><button type="button" id="reiniciar" class="reiniciar">Reiniciar</button><button type="button" id="regresar" class="reiniciar">Regresar</button></div>');
+	/*$("body").append('<div><button type="button" id="reiniciar" class="reiniciar">Reiniciar</button><button type="button" id="regresar" class="reiniciar">Regresar</button></div>');*/
+	$("body").append('<div id="movBot"><input type="button" value="Reiniciar" onclick="location.reload()"/><p id="talking_boxm" class="texto2">Movimientos<br>0</p></div>');
 }
 
 //Dibuja las piezas
@@ -39,17 +40,19 @@ var Game = function()
 {
 	this.isWrongCount = 0; 
 	this.isWrongCount2 = 0; 
-	this.piecesArray = new Array(); 
+	this.piecesArray = new Array();
+	this.contador = 0;  
 
 	this.restart = function(){
 		this.isWrongCount = 0; 
 		this.isWrongCount2 = 0; 
 		this.piecesArray = new Array(); 
+		this.contador = 0;  
 
 		document.getElementById("talking_box").remove();
-		document.getElementById("talking_box").remove();
-		$("#textos").append('<p id="talking_box" class="texto1">¡Bienvenido ' + localStorage.getItem("name") + '!</p>');
-		$("#textos").append('<p id="talking_box" class="texto2">¡Empieza el Juego!</p>');
+		document.getElementById("talking_boxm").remove();
+		$("#textos").append('<p id="talking_box" class="texto1">¡Bienvenido <br>' + localStorage.getItem("name") + '!</p>');
+		/*$("#textos").append('<p id="talking_box" class="texto2">¡Empieza el Juego!</p>');*/
 	}
 	this.initializeGame = function()
 	{
@@ -192,26 +195,40 @@ var Game = function()
 		else
 			return false;
 	}
+
+	this.conteo = function()
+	{
+		this.contador++;
+		return this.contador;
+	}
 }
 //Inicia el juego
 $(document).ready(function(){
 	var game = new Game();
 	game.initializeGame();
 	game.drawBoard();
+
 	$(".game_piece").click(function(){	
 		var piece_number = $(this).children().text();	
-		if(game.movePiece(piece_number))
+		if(game.movePiece(piece_number)){
 			$(this).animate({'top':((game.piecesArray[piece_number-1].posX-1)*33)+'%','left':((game.piecesArray[piece_number-1].posY-1)*33)+'%'},540);
+			document.getElementById("talking_box").remove();
+			document.getElementById("talking_boxm").remove();
+			$("#textos").append('<p id="talking_box" class="texto1">¡Bienvenido <br>' + localStorage.getItem("name") + '!</p>');
+			$("#movBot").append('<p id="talking_boxm" class="texto2">Movimientos<br> '+ game.conteo() +'</p>');
+		} 
+		
 		if(game.checkGame()){
 			document.getElementById("talking_box").remove();
-			document.getElementById("talking_box").remove();
+			document.getElementById("talking_boxm").remove();
 			$("#textos").append('<p id="talking_box" class="texto1">¡Fin del Juego!</p>');
-			$("#textos").append('<p id="talking_box" class="texto2">¡Puzzle Completado!</p>');
+			$("#movBot").append('<p id="talking_boxm" class="texto2">¡Puzzle Completado!</p>');
 
 			document.getElementById("piece_container").remove();
 			$("#game_board").append('<img src="cat.gif" alt="dancing cats" id="cats" />');
 		}
 	});	
+
 	drawButtons();
 	$("#reiniciar").click(function(){	
 		try{
@@ -227,18 +244,24 @@ $(document).ready(function(){
 
 		$(".game_piece").click(function(){	
 			var piece_number = $(this).children().text();	
-			if(game.movePiece(piece_number))
+			if(game.movePiece(piece_number)){
 				$(this).animate({'top':((game.piecesArray[piece_number-1].posX-1)*33)+'%','left':((game.piecesArray[piece_number-1].posY-1)*33)+'%'},540);
+				document.getElementById("talking_box").remove();
+				document.getElementById("talking_boxm").remove();
+				$("#textos").append('<p id="talking_box" class="texto1">¡Bienvenido <br>' + localStorage.getItem("name") + '!</p>');
+				$("#movBot").append('<p id="talking_boxm" class="texto2">Movimientos<br> '+ game.conteo() +'</p>');
+			} 
+			
 			if(game.checkGame()){
 				document.getElementById("talking_box").remove();
-				document.getElementById("talking_box").remove();
+				document.getElementById("talking_boxm").remove();
 				$("#textos").append('<p id="talking_box" class="texto1">¡Fin del Juego!</p>');
-				$("#textos").append('<p id="talking_box" class="texto2">¡Puzzle Completado!</p>');
-
+				$("#movBot").append('<p id="talking_boxm" class="texto2">¡Puzzle Completado!</p>');
+	
 				document.getElementById("piece_container").remove();
 				$("#game_board").append('<img src="cat.gif" alt="dancing cats" id="cats" />');
-			}		
-		});
+			}
+		});	
 	});	
 
 	$("#regresar").click(function(){	

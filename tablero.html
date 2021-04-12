@@ -6,9 +6,13 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="game.js"></script>
 	</head>
-	<body>
+	<body background="img/Tablero.jpg">
 		<script type="text/javascript">
-			$("body").append('<div id="textos"><p id="talking_box" class="texto1">¡Bienvenido ' + localStorage.getItem("name") + '!</p><p id="talking_box" class="texto2">¡Empieza el Juego!</p></div>');
+			/*$("body").append('<div id="textos"><p id="talking_box" class="texto1">¡Bienvenido ' + localStorage.getItem("name") + '!</p><p id="talking_box" class="texto2">¡Empieza el Juego!</p></div>');*/
+			$("body").append('<div id="textos"><input type="image" src="img/Atras_.png" id="regresar"/><p id="talking_box" class="texto1">¡Bienvenido <br>' + localStorage.getItem("name") + '!</p></div>');
+			$("#regresar").click(function(){	
+				window.history.back();
+			});	
 		</script>
 	</body>
 </html>

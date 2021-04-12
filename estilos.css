@@ -5,18 +5,35 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow-x: hidden;
-	font-family:serif;
+	/*font-family:serif;*/
+	font-family: 'Nunito', sans-serif;
 	position: relative;
 }
 body
 {
-	background-color: #6e71ff;
-	color:#011d6b;
+	/*background-color: #6e71ff;
+	color:#011d6b;*/
 	font-size: 46px;
 	text-align: center;
 	-webkit-user-select: none;
   	user-select: none; 
+	background-size: cover;
+	height: 100vh;
 }
+
+input[type="text"] {
+    font-size: 25px;
+	background-color:rgba(0, 0, 0, 0);
+    color:white;
+    border: none;
+    outline:none;
+    height: 70px;
+	width: 250px;
+    transition:height 1s;
+	border-bottom: 3px solid #55B790;
+	margin: 50px auto 0px auto;
+}
+
 #piece_container
 {
 	background-color: #6e95ff;
@@ -36,7 +53,7 @@ body
 }
 .game_board
 {
-	background-color: #6e95ff;
+	background-color: #1AA36D;
 	border-radius: 5px;
 	margin: 10px auto;
 	position: relative;
@@ -51,13 +68,29 @@ body
 }
 #talking_box
 {
-	background-color: #FFF3E6;
+	/*background-color: #FFF3E6;
 	border: 5px solid #020088;
 	border-radius: 5px;
 	color: #6e95ff;
 	height:auto;
 	margin: 10px auto;
+	padding-bottom: 5px;*/
+	height:auto;
+	margin: 20px auto;
 	padding-bottom: 5px;
+	font-family: 'Train One', cursive;
+	font-size: 40px;
+	color: white;
+}
+#talking_boxm
+{
+	height:auto;
+	margin: 20px auto;
+	padding-bottom: 5px;
+	padding-left: 100px;
+	font-family: 'Nunito', sans-serif;
+	font-size: 25px;
+	color: white;
 }
 .number_container
 {	
@@ -81,23 +114,30 @@ body
 }
 #talking_box2
 {
-	background-color: #ffffff;
+	/*background-color: #ffffff;
 	border: 5px solid #020088;
 	border-radius: 5px;
-	color: #6e95ff;
+	color: #6e95ff;*/
 	height:auto;
 	margin: 20px auto;
 	padding-bottom: 5px;
+	font-family: 'Train One', cursive;
+	font-size: 40px;
+	color: white;
 }
 #talking_box3
 {
-	background-color: #ffffff;
+	/*background-color: #ffffff;
 	border: 5px solid #020088;
 	border-radius: 5px;
-	color: #6e95ff;
+	color: #6e95ff;	
+	margin: 30px auto;*/
 	height:auto;
-	margin: 30px auto;
+	margin: 70px auto 0px auto;
 	padding-bottom: 5px;
+	font-family: 'Train One', cursive;
+	color: white;
+	font-family: 'Nunito', sans-serif;
 }
 #cats{
 	display: block;
@@ -105,6 +145,28 @@ body
 	margin-right: auto;
 	width: 95%;
    	height: auto;
+}
+
+#regresar{
+	width: 50px;
+	height: 50px;
+	border-radius: 15px;
+}
+
+#textos{
+	display: flex;
+    justify-content: space-between;
+	width: 500px;
+    align-items: center;
+	margin: auto;
+}
+
+#movBot{
+	display: flex;
+    justify-content: space-between;
+	width: 300px;
+    align-items: center;
+	margin: auto;
 }
 
 @media only screen and (min-width: 0px) and (min-height: 0px) {
@@ -155,10 +217,15 @@ body
 		text-align: center;
 	}
 	#modo{
-		font-size: 35px;
-		width: 225px;
-		height: 50px;
+		font-size: 20px;
+		width: 190px;
+		height: 30px;
 		margin-bottom: 20px;
+	}
+	#play {
+		width: 100px;
+		height: 95px;
+		margin: 15px;
 	}
 }
 
@@ -211,6 +278,11 @@ body
 		height: 60px;
 		margin-bottom: 30px;
 	}
+	#play {
+		width: 110px;
+		height: 105px;
+		margin: 17px;
+	}
 }
 
 @media only screen and (min-width: 1024px) and (min-height: 800px) {
@@ -260,11 +332,16 @@ body
 		width: 500px;
 		font-size: 70px;
 		text-align: center;
-	}
+	}	
 	#modo{
-		font-size: 50px;
-		width: 300px;
-		height: 75px;
+		font-size: 23px;
+		width: 190px;
+		height: 20px;
 		margin-bottom: 30px;
+	}
+	#play {
+		width: 120px;
+		height: 115px;
+		margin: 20px;
 	}
 }
